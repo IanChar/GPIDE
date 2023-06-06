@@ -1,4 +1,0 @@
-expl_env: 'unav-sim'
-eval_envs:
-  eval_sim: 'unav-sim'
-  eval_real: 'unav-real'
