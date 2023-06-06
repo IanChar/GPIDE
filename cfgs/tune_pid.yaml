@@ -1,0 +1,11 @@
+name: ???
+seed: 0
+num_seeds: 5
+cuda_device: null
+defaults:
+  - _self_
+  - pid: msd
+  - env: msd-fixed
+hydra:
+  run:
+    dir: logs/pid/${name}/${seed}

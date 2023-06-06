@@ -1,0 +1,75 @@
+rl_algorithm: 'sac'
+obs_type: 'xtf'
+share_encoders: False
+policy:
+  _target_: rlkit.torch.sac.policies.sequential_gaussian_policy.SequentialGaussianPolicy
+  decoder_hidden_sizes:
+    - 24
+  obs_encode_dim: 8
+  encoder:
+    _target_: rlkit.torch.networks.history_encoders.gid_encoder.GIDEncoder
+    out_dim: 64
+    seq_length: 100
+    n_attention_heads: 0
+    n_integral_heads: 0
+    exp_smoothing_weights:
+    - 0.01
+    - 0.1
+    - 0.25
+    - 0.5
+    - 0.9
+    - 1.0
+    embed_dim_per_head: 16
+    obs_encode_dim: 8
+    act_encode_dim: 0
+    rew_encode_dim: 0
+    transition_encode_dim: 8
+    decoder_hidden_size: 64
+qnet:
+  _target_: rlkit.torch.networks.mlp.SequentialMlp
+  hidden_sizes:
+    - 256
+    - 256
+  encoder:
+    _target_: rlkit.torch.networks.history_encoders.gid_encoder.GIDEncoder
+    out_dim: 64
+    seq_length: 100
+    n_attention_heads: 0
+    n_integral_heads: 0
+    exp_smoothing_weights:
+    - 0.01
+    - 0.1
+    - 0.25
+    - 0.5
+    - 0.9
+    - 1.0
+    embed_dim_per_head: 16
+    obs_encode_dim: 8
+    act_encode_dim: 0
+    rew_encode_dim: 0
+    transition_encode_dim: 8
+    decoder_hidden_size: 64
+  obs_act_encode_dim: 64
+eval_path_collector:
+  _target_: rlkit.samplers.data_collector.path_collector.BatchTaskEvalCollector
+  split: ${split_type}
+expl_path_collector:
+  _target_: rlkit.samplers.data_collector.path_collector.BatchMdpPathCollector
+replay_buffer:
+  _target_: rlkit.data_management.naive_sequence_replay_buffer.NaiveSequenceReplayBuffer
+  max_replay_buffer_size: 1e6
+  batch_window_size: 100
+trainer:
+  _target_: rlkit.torch.sac.sequential_sac.SequentialSACTrainer
+  discount: 0.95
+  policy_lr: 3e-4
+  qf_lr: 3e-4
+algorithm:
+  _target_: rlkit.torch.torch_rl_algorithm.TorchBatchRLAlgorithm
+  num_epochs: 5000
+  batch_size: 32
+  max_path_length: 100
+  num_eval_steps_per_epoch: 10000
+  num_expl_steps_per_train_loop: 1000
+  num_trains_per_train_loop: 1000
+  num_train_loops_per_epoch: 1
