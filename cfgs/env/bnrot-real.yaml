@@ -1,4 +1,0 @@
-expl_env: 'bnrot-real'
-eval_envs:
-  eval_sim: 'bnrot-sim'
-  eval_real: 'bnrot-real'
