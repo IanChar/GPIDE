@@ -1,0 +1,6 @@
+expl_env: 'dmsd-large'
+eval_envs:
+  eval_fixed: 'dmsd-fixed'
+  eval_small: 'dmsd-small'
+  eval_med: 'dmsd-med'
+  eval_large: 'dmsd-large'

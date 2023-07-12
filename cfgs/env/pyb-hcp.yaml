@@ -1,0 +1,3 @@
+expl_env: 'HalfCheetahBLT-P-v0'
+eval_envs:
+  evaluation: 'HalfCheetahBLT-P-v0'

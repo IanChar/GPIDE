@@ -1,0 +1,4 @@
+expl_env: 'nav-sim'
+eval_envs:
+  eval_sim: 'nav-sim'
+  eval_real: 'nav-real'

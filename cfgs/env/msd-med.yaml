@@ -1,0 +1,6 @@
+expl_env: 'msd-med'
+eval_envs:
+  eval_fixed: 'msd-fixed'
+  eval_small: 'msd-small'
+  eval_med: 'msd-med'
+  eval_large: 'msd-large'
