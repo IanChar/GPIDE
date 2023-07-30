@@ -126,7 +126,7 @@ class Navigation(gym.Env):
             self.iterm,
             dterm,
             self.target,
-            -self.target[2:],
+            -self.state[2:],
             self.get_task(),
             self._last_act
         ]))
@@ -155,6 +155,9 @@ class Navigation(gym.Env):
         self._mass = task[2]
 
     def get_task(self):
+        if (np.isclose(self._kinetic_friction, 0.0)
+                and np.isclose(self._static_friction, 0.0)):
+            return np.array([0, 0, self._mass])
         return np.array([
             self._static_friction,
             self._kinetic_friction / self._static_friction,
@@ -206,7 +209,7 @@ class Navigation(gym.Env):
             self.state[:2] + self._dt * self.state[2:],
             np.clip(self.state[2:] + total_force / self._mass,
                     -self._max_velmag_bound,
-                    self._max_velmag_bound),
+                    self._max_velmag_bound).flatten(),
         ])
         # Check for collisions and account for this accordingly. This section is
         # imperfect for sure but should be OK for small enough dt and low enough vel.
