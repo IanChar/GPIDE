@@ -1,0 +1,4 @@
+expl_env: 'fusion-real'
+eval_envs:
+  eval_sim: 'fusion-sim'
+  eval_real: 'fusion-real'
