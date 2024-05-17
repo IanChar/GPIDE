@@ -18,7 +18,7 @@ from rlkit.envs.env_constants import TABLE_RESULTS
 # %% Constants and set up the plotting.
 ###########################################################################
 parser = argparse.ArgumentParser()
-parser.add_argument('--data_path', type=str, default=None)
+parser.add_argument('--data_path', type=str, default='traces/pomdp')
 parser.add_argument('--rlkit_smoothing', type=int, default=100)
 parser.add_argument('--baseline_smoothing', type=int, default=10)
 parser.add_argument('--hide_baselines', action='store_true')
@@ -44,10 +44,10 @@ ENV_NAME_MAP = {
 }
 LABEL_MAP = {
     # 'pyb_gid_sac': 'GPIDE',
+    # 'pyb_transformer_sac': 'Transformer',
     'pyb_gidattn_sac': 'GPIDE-Attn',
     'pyb_gidnoattn_sac': 'GPIDE-ESS',
     'pyb_gidnoattnnosum_sac': 'GPIDE-ES',
-    # 'pyb_transformer_sac': 'Transformer',
 }
 # General plotting stuff.
 DROPNA = False

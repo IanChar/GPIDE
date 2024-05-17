@@ -15,13 +15,13 @@ from rlkit.envs.env_constants import PID_RESULTS
 # %% Constants and set up the plotting.
 ###########################################################################
 parser = argparse.ArgumentParser()
-parser.add_argument('--data_path', type=str, default='logs/final-v1')
+parser.add_argument('--data_path', type=str, default='traces/tracking')
 parser.add_argument('--env_type', type=str, default='msd')
-parser.add_argument('--var_types', type=str, default='fixed,small,med,large')
+parser.add_argument('--var_types', type=str, default='fixed,small,large')
 parser.add_argument('--xname', type=str, default='exploration/num steps total')
 parser.add_argument('--diameter', type=int, default=15)
 parser.add_argument('--xlim', type=int, default=int(10 * 1e5))
-parser.add_argument('--include_pid', action='store_true')
+parser.add_argument('--include_pid', type=int, default=1)
 parser.add_argument('--row_plots', action='store_true')
 args = parser.parse_args()
 plt.style.use('seaborn')

@@ -15,7 +15,7 @@ from rlkit.envs.env_constants import PID_RESULTS
 # %% Constants and set up the plotting.
 ###########################################################################
 parser = argparse.ArgumentParser()
-parser.add_argument('--data_path', type=str, default='logs/final-v1/long-nav')
+parser.add_argument('--data_path', type=str, default='traces/long-nav')
 parser.add_argument('--xname', type=str, default='exploration/num steps total')
 parser.add_argument('--diameter', type=int, default=15)
 parser.add_argument('--xlim', type=int, default=int(50 * 1e5))
@@ -34,6 +34,9 @@ METHODS = [
     'msd_transformer_sac',
     'msd_pid_sac',
     'msd_gid_sac',
+    # 'msd_gidattn_sac',
+    # 'msd_gidnoattn_sac',
+    # 'msd_gidnoattnnosum_sac',
 ]
 COLOR_MAP = {
     'msd_gid_sac': 'red',
