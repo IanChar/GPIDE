@@ -1,7 +1,7 @@
 # GPIDE
 
-This is code for the paper "PID-Inspired Inductive Biases for Deep Reinforcement
-Learning in Partially Observable Control Tasks".
+This is code for the paper "[PID-Inspired Inductive Biases for Deep Reinforcement
+Learning in Partially Observable Control Tasks](https://arxiv.org/abs/2307.05891)".
 
 ## Installation
 
